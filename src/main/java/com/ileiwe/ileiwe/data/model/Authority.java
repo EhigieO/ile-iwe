@@ -20,4 +20,7 @@ public class Authority {
     @Enumerated(EnumType.STRING)
     private Role authority;
 
+    public Authority(Role role) {
+        authority =  role;
+    }
 }

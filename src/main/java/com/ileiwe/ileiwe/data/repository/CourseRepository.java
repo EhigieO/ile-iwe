@@ -1,0 +1,7 @@
+package com.ileiwe.ileiwe.data.repository;
+
+import com.ileiwe.ileiwe.data.model.Course;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CourseRepository extends JpaRepository<Course, Long> {
+}

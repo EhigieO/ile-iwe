@@ -116,6 +116,33 @@ class InstructorRepositoryTest {
 
     }
 
+    @Test
+    void updateInstructorAfterCreateTest() {
+        LearningParty user = new LearningParty("trainer6@ileiwe.com", "124pass", new Authority(Role.ROLE_INSTRUCTOR));
 
+        Instructor instructor = Instructor.builder().firstname("Johnie").lastname("Alamies").learningParty(user).build();
+
+
+        log.info("Instructor before saving --> {}", instructor);
+        instructorRepository.save(instructor);
+        assertThat(instructor.getId()).isNotNull();
+        assertThat(instructor.getLearningParty().getId()).isNotNull();
+        log.info("Instructor after saving --> {}", instructor);
+
+        Instructor savedInstructor =  instructorRepository.findById(instructor.getId()).orElse(null);
+
+        assertThat(savedInstructor).isNotNull();
+        assertThat(savedInstructor.getBio()).isNull();
+        assertThat(savedInstructor.getGender()).isNull();
+
+        savedInstructor.setBio("I am a java instructor");
+        savedInstructor.setGender(GENDER.FEMALE);
+
+        instructorRepository.save(savedInstructor);
+
+        assertThat(savedInstructor.getBio()).isNotNull();
+        assertThat(savedInstructor.getGender()).isNotNull();
+
+    }
 
 }

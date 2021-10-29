@@ -90,4 +90,12 @@ class LearningPartyTest {
         assertThrows(ConstraintViolationException.class, () -> learningPartyRepository.save(learningUserTwo));
     }
 
+    @Test
+    void findByUserNameTest(){
+        LearningParty learningParty = learningPartyRepository.findByEmail("tomi@mail.com");
+        assertThat(learningParty).isNotNull();
+        assertThat(learningParty.getEmail()).isEqualTo("tomi@mail.com");
+        log.info("Learning party object --> {}", learningParty);
+    }
+
 }

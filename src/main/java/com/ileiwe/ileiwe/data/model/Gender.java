@@ -1,5 +1,5 @@
 package com.ileiwe.ileiwe.data.model;
 
-public enum GENDER {
+public enum Gender {
     FEMALE, MALE
 }

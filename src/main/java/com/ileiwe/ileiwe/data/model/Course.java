@@ -12,38 +12,27 @@ import java.util.List;
 
 @Data
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = false)
     private String title;
-
     @Column(length = 1000)
     private String description;
-
-    private  String language;
-
+    private String duration;
+    private String language;
     @ElementCollection
-    private List<String> imageUrl;
-
+    private List<String> imageUrls;
     @CreationTimestamp
     private LocalDateTime dateCreated;
-
     private LocalDateTime datePublished;
-
     @UpdateTimestamp
     private LocalDateTime updatedAt;
-
     private boolean isPublished;
-
     @ManyToOne
     private Instructor instructor;
-
     @ManyToMany
-    private  List<Student> students;
+    private List<Student> students;
 }
